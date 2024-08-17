@@ -21,6 +21,7 @@ func logMsg(msg string, v ...any) {
     frame, more := frames.Next()
     if strings.Contains(frame.File, "asm_amd64") { break }
     if strings.Contains(frame.File, "go/pkg/mod") { break }
+    if strings.Contains(frame.File, "go/src/runtime/proc") { break }
     fileres += fmt.Sprintf("%v:%v -> ", frame.File, frame.Line)
     if !more { break }
   }
