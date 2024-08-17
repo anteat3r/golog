@@ -39,10 +39,10 @@ func logMsg(msg string, v ...any) {
   )
 }
 
-func LogError(v ...any) {
+func Error(v ...any) {
   logMsg("ERROR", v...)
 }
 
-func LogInfo(v ...any) {
+func Info(v ...any) {
   logMsg("INFO", v...)
 }
