@@ -7,7 +7,7 @@ import (
   "time"
 )
 
-func logMsg(msg string, tmpl string, v ...any) {
+func logMsg(msg string, tmpl string, cnt int, v ...any) {
   fileres := ""
   pc := make([]uintptr, 10)
   n := runtime.Callers(3, pc)
@@ -28,8 +28,12 @@ func logMsg(msg string, tmpl string, v ...any) {
 
   fileend:
   res := ""
+  bf := make([]any, cnt)
   for _, e := range v {
-    res += fmt.Sprintf(tmpl, e, e)
+    for i := range cnt {
+      bf[i] = e
+    }
+    res += fmt.Sprintf(tmpl, bf...)
   }
   fmt.Printf(
     "%v %v%v: %v\n\n",
@@ -41,13 +45,13 @@ func logMsg(msg string, tmpl string, v ...any) {
 }
 
 func Error(v ...any) {
-  logMsg("ERROR", "%v %T, ", v...)
+  logMsg("ERROR", "%v %T, ", 2, v...)
 }
 
 func Info(v ...any) {
-  logMsg("INFO", "%v %T, ", v...)
+  logMsg("INFO", "%v %T, ", 2, v...)
 }
 
-func InfoT(t string, v ...any) {
-  logMsg("INFO", t, v...)
+func InfoT(t string, cnt int, v ...any) {
+  logMsg("INFO", t, cnt, v...)
 }
