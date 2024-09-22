@@ -48,6 +48,6 @@ func Info(v ...any) {
   logMsg("INFO", "%v %T, ", v...)
 }
 
-func InfoT(v ...any) {
-  logMsg("INFO", "%v %T, ", v...)
+func InfoT(t string, v ...any) {
+  logMsg("INFO", t, v...)
 }
