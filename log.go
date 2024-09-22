@@ -36,8 +36,8 @@ func logMsg(msg string, tmpl string, cnt int, v ...any) {
     res += fmt.Sprintf(tmpl, bf...)
   }
   fmt.Printf(
-    "%v %v%v: %v\n\n",
-    strings.Split(time.Now().String(), ".")[0],
+    "%v%v%v: %v\n\n",
+    strings.Split(time.Now().String(), "+")[0],
     fileres,
     msg,
     res,
